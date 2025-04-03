@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Truck Menu</title>
+    <title>Available Trucks</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,23 +35,6 @@
             color: red;
             font-weight: bold;
         }
-        .content {
-            padding: 20px;
-            font-size: 20px;
-        }
-        .cta {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #6d5e5a;
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            border-radius: 5px;
-        }
-        .cta:hover {
-            background-color: #c70039;
-        }
     </style>
 </head>
 <body>
@@ -69,7 +52,6 @@
         <tbody>
             {% for item in menu_items %}
             <tr>
-                
                 <td>{{ item.item_name }}</td>
                 <td>
                     {% if item.availability|lower == "available" %}
@@ -89,8 +71,6 @@
             {% endfor %}
         </tbody>
     </table>
-    <div class="content">
-        <a href="/add_menu" class="cta">Add Menu</a>
-    </div>
+
 </body>
 </html>
