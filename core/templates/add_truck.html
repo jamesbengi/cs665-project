@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Truck</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, textarea, button, select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Add Truck</h2>
+        <form action="#" method="POST">
+            {% csrf_token %}
+            <label for="truck">Truck</label>
+        
+
+            <label for="item_name">Truck Name</label>
+            <input type="text" name="truck_name" id="truck_name" placeholder="Truck Name" required>
+
+            <label for="price">Owner</label>
+            <input type="text" name="owner" id="owner" placeholder="Owner" required>
+
+            <label for="Location">Locationn</label>
+            <textarea name="location" id="location" placeholder="Truck Location" required></textarea>
+
+            <button type="submit">Submit Truck</button>
+            <button type="submit">Update Truck</button>
+        </form>
+    </div>
+</body>
+</html>

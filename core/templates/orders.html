@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #2a2523;
+        }
+        table {
+            width: 60%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #8e645a;
+            color: rgb(20, 20, 20);
+        }
+        .price {
+            font-weight: bold;
+            color: #ff5733;
+        }
+        .unavailable {
+            color: red;
+            font-weight: bold;
+        }
+        .content {
+            padding: 20px;
+            font-size: 20px;
+        }
+        .cta {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #6d5e5a;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        .cta:hover {
+            background-color: #c70039;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Orders</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>Total Price</th>
+        
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in order %}
+            <tr>
+                
+                <td>{{ order.status}}</td>
+                <td>${{order.total_price}}</td>
+            
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">No menu items available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="content">
+        <a href="/add_truck" class="cta">Add Truck</a>
+    </div>
+</body>
+</html>

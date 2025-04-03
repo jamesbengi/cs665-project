@@ -32,6 +32,27 @@ def add_menu(request):
         menu_item.save()
         return redirect('menu')
     return render(request, 'add_menu.html',{'menu':menu})
+def trucks(request):
+    trucks = Trucks.objects.all()
+    context = {
+        'trucks': trucks
+    }
+    return render(request, 'trucks.html', {'trucks': trucks})
+def add_truck(request):
+    if request.method == 'POST':
+        truck_name = request.POST.get('truck_name')
+        truck_location = request.POST.get('location')
+        owner = request.POST.get('owner')
 
+        truck = models.Trucks.objects.create(
+            name=truck_name,
+            current_location=truck_location,
+            owner=owner,
+        )
+        truck.save()
+        return redirect('trucks')
+    return render(request, 'add_truck.html')
       
-   
+def orders(request):
+    order = Orders.objects.all()
+    return render(request, 'orders.html',{'order': order})

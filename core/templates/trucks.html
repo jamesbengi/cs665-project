@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Available Trucks</title>
+    <title>Trucks</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,34 +35,44 @@
             color: red;
             font-weight: bold;
         }
+        .content {
+            padding: 20px;
+            font-size: 20px;
+        }
+        .cta {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #6d5e5a;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        .cta:hover {
+            background-color: #c70039;
+        }
     </style>
 </head>
 <body>
 
-    <h1>Food Truck Menu</h1>
+    <h1>Trucks</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Item Name</th>
-                <th>Availability</th>
-                <th>Price</th>
+                <th>Truck Name</th>
+                <th>Owner</th>
+                <th>Current Location</th>
             </tr>
         </thead>
         <tbody>
-            {% for item in menu_items %}
+            {% for truck in trucks %}
             <tr>
-                <td>{{ item.item_name }}</td>
-                <td>
-                    {% if item.availability|lower == "available" %}
-                        ✅ Available
-                    {% elif item.availability|lower == "out of order" %}
-                        ❌ Out of Order
-                    {% else %}
-                        ⚠️ Unknown Status
-                    {% endif %}
-                </td>
-                <td class="price">${{ item.price }}</td>
+                
+                <td>{{ truck.name}}</td>
+                <td>{{truck.owner}}</td>
+                <td class="price">{{ truck.current_location}}</td>
             </tr>
             {% empty %}
             <tr>
@@ -71,6 +81,8 @@
             {% endfor %}
         </tbody>
     </table>
-
+    <div class="content">
+        <a href="/add_truck" class="cta">Add Truck</a>
+    </div>
 </body>
 </html>
