@@ -56,3 +56,57 @@ def add_truck(request):
 def orders(request):
     order = Orders.objects.all()
     return render(request, 'orders.html',{'order': order})
+def add_order(request):
+    trucks = Trucks.objects.all()
+    customers= Customers.objects.all()
+    if request.method == 'POST':
+        truck= request.POST.get('truck')
+        customer= request.POST.get('customer')
+        status = request.POST.get('status')
+        price= request.POST.get('price')
+
+        order = Orders.objects.create(
+            customer_id=customer,
+            truck_id=truck,
+            status=status,
+            total_price=price,
+        )
+        order.save()
+
+
+        return redirect('orders')
+    return render(request, 'add_order.html', {'trucks': trucks, 'customers': customers})
+def customers(request):
+    customers = Customers.objects.all()
+    return render(request, 'customers.html',{'customers': customers})
+def add_customer(request):
+    if request.method == 'POST':
+        name = request.POST.get('customer_name')
+        email = request.POST.get('email')
+        phone_number = request.POST.get('phone')
+
+        customer = models.Customers.objects.create(
+            name=name,
+            email=email,
+            phone_no=phone_number,
+        )
+        customer.save()
+        return redirect('customers')
+    return render(request, 'add_customer.html')
+def delete_customer(request,customer_id):
+    customer = Customers.objects.get(customer_id=customer_id)
+    print(customer_id)
+    customer.delete()
+    return redirect('customers')
+def delete_menu(request, menu_id):
+    menu = Menu.objects.get(item_id=menu_id)
+    menu.delete()
+    return redirect('menu')
+def delete_truck(request, truck_id):
+    truck = Trucks.objects.get(truck_id=truck_id)
+    truck.delete()
+    return redirect('trucks')
+def delete_order(request, order_id):
+    order = Orders.objects.get(order_id=order_id)
+    order.delete()
+    return redirect('orders')

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orders</title>
+    <title>Customers</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -56,42 +56,41 @@
 </head>
 <body>
 
-    <h1>Orders</h1>
+    <h1>Customers</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Status</th>
-                <th>Total Price</th>
-                <th>Actions</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Action</th>
         
             </tr>
         </thead>
         <tbody>
-            {% for order in order %}
+            {% for customer in customers %}
             <tr>
                 
-                <td>{{ order.status}}</td>
-                <td>${{order.total_price}}</td>
+                <td>{{ customer.name}}</td>
+                <td>{{customer.phone_no}}</td>
+                <td>{{customer.email}}</td>
                 <td>
-                    <a href="{% url 'delete_order' order.order_id %}" 
+                    <a href="{% url 'delete_customer' customer.customer_id %}" 
                        onclick="return confirm('Are you sure you want to delete this customer?');" 
                        style="background-color: #d9534f; color: white; padding: 6px 12px; text-decoration: none; border-radius: 4px;">
                         Delete
                     </a>
                 </td>
+               
             
             </tr>
-            {% empty %}
-            <tr>
-                <td colspan="3">No menu items available.</td>
-            
-            </tr>
+           
             {% endfor %}
         </tbody>
     </table>
     <div class="content">
-        <a href="/add_order" class="cta">Place Order</a>
+        <a href="/add_customer" class="cta">Add Customer</a>
     </div>
 </body>
 </html>

@@ -64,6 +64,7 @@
                 <th>Item Name</th>
                 <th>Availability</th>
                 <th>Price</th>
+                <th>Action</th> 
             </tr>
         </thead>
         <tbody>
@@ -81,6 +82,13 @@
                     {% endif %}
                 </td>
                 <td class="price">${{ item.price }}</td>
+                <td>
+                    <a href="{% url 'delete_menu' item.item_id %}" 
+                       onclick="return confirm('Are you sure you want to delete this customer?');" 
+                       style="background-color: #d9534f; color: white; padding: 6px 12px; text-decoration: none; border-radius: 4px;">
+                        Delete
+                    </a>
+                </td>
             </tr>
             {% empty %}
             <tr>

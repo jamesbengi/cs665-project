@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Menu</title>
+    <title>Place Order</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,28 +35,34 @@
 </head>
 <body>
     <div class="form-container">
-        <h2>Add Menu</h2>
+        <h2>Add Order</h2>
         <form action="#" method="POST">
             {% csrf_token %}
+           
             <label for="truck">Truck</label>
             <select name="truck" id="truck" required>
-                {%for truck in menu%}
-               
+                {%for truck in trucks%}
+                
+                <!-- Add trucks dynamically from your backend -->
                 <option value="{{truck.truck_id}}">{{truck.name}}</option>
                 {% endfor %}
             </select>
+            <label for="customer">Customer</label>
+            <select name="customer" id="customer" required>
+                {%for customer in customers%}
+               
+                <!-- Add trucks dynamically from your backend -->
+                <option value="{{customer.customer_id}}">{{customer.name}}</option>
+                {% endfor %}
+            </select>
 
-            <label for="item_name">Item Name</label>
-            <input type="text" name="item_name" id="item_name" placeholder="Item Name" required>
+            <label for="price">Status</label>
+            <input type="text" name="status" id="status" placeholder="Status" required>
 
-            <label for="price">Price</label>
+            <label for="price">Total Price</label>
             <input type="number" name="price" id="price" placeholder="Price" step="0.01" required>
-
-            <label for="availability">Availability</label>
-            <textarea name="availability" id="availability" placeholder="Item Availability Details" required></textarea>
-
-            <button type="submit">Submit Item</button>
-            <button type="submit">Update Item</button>
+            <button type="submit">Submit Order</button>
+            <button type="submit">Update Order</button>
         </form>
     </div>
 </body>
