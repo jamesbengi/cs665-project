@@ -65,6 +65,7 @@
                 <th>Availability</th>
                 <th>Price</th>
                 <th>Action</th> 
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -89,6 +90,11 @@
                         Delete
                     </a>
                 </td>
+                <td>
+                    <a href="{% url 'update_menu' item.item_id %}" 
+                       style="background-color: #5bc0de; color: white; padding: 6px 12px; text-decoration: none; border-radius: 4px;">
+                        Update
+                    </a>
             </tr>
             {% empty %}
             <tr>

@@ -35,27 +35,21 @@
 </head>
 <body>
     <div class="form-container">
-        <h2>Add Menu</h2>
+        <h2>Update Menu</h2>
         <form action="#" method="POST">
             {% csrf_token %}
-            <label for="truck">Truck</label>
-            <select name="truck" id="truck" required>
-                {%for truck in menu%}
-               
-                <option value="{{truck.truck_id}}">{{truck.name}}</option>
-                {% endfor %}
-            </select>
+            
 
             <label for="item_name">Item Name</label>
-            <input type="text" name="item_name" id="item_name" placeholder="Item Name" required>
+            <input type="text" name="item_name" id="item_name" value="{{menu.item_name}}" required>
 
             <label for="price">Price</label>
-            <input type="number" name="price" id="price" placeholder="Price" step="0.01" required>
+            <input type="number" name="price" id="price" value="{{menu.price}}" step="0.01" required>
 
             <label for="availability">Availability</label>
-            <textarea name="availability" id="availability" placeholder="Item Availability Details" required></textarea>
+            <textarea type= 'text' name="availability" id="availability" value="{{menu.availability}}" required></textarea>
 
-            <button type="submit">Submit Item</button>
+            <button type="submit">Update Item</button>
             
         </form>
     </div>

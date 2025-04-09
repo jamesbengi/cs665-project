@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Menu</title>
+    <title>Update Truck</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,27 +35,22 @@
 </head>
 <body>
     <div class="form-container">
-        <h2>Add Menu</h2>
+        <h2>Update Truck</h2>
         <form action="#" method="POST">
             {% csrf_token %}
-            <label for="truck">Truck</label>
-            <select name="truck" id="truck" required>
-                {%for truck in menu%}
-               
-                <option value="{{truck.truck_id}}">{{truck.name}}</option>
-                {% endfor %}
-            </select>
+            
+        
 
-            <label for="item_name">Item Name</label>
-            <input type="text" name="item_name" id="item_name" placeholder="Item Name" required>
+            <label for="item_name">Truck Name</label>
+            <input type="text" name="truck_name" id="truck_name" value="{{truck.name}}" required>
 
-            <label for="price">Price</label>
-            <input type="number" name="price" id="price" placeholder="Price" step="0.01" required>
+            <label for="price">Owner</label>
+            <input type="text" name="owner" id="owner" value="{{truck.owner}}" required>
 
-            <label for="availability">Availability</label>
-            <textarea name="availability" id="availability" placeholder="Item Availability Details" required></textarea>
+            <label for="Location">Location</label>
+            <input name="location" id="location" value="{{truck.current_location}}" required>
 
-            <button type="submit">Submit Item</button>
+            <button type="submit">Update Truck</button>
             
         </form>
     </div>

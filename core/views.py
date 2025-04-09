@@ -110,3 +110,32 @@ def delete_order(request, order_id):
     order = Orders.objects.get(order_id=order_id)
     order.delete()
     return redirect('orders')
+def update_customer(request, customer_id):
+    customer = Customers.objects.get(customer_id=customer_id)
+    if request.method == 'POST':
+        customer.name = request.POST.get('customer_name')
+        customer.email = request.POST.get('email')
+        customer.phone_no = request.POST.get('phone')
+        customer.save()
+        return redirect('customers')
+    return render(request, 'update_customer.html', {'customer': customer})
+def update_menu(request, menu_id):
+    menu = Menu.objects.get(item_id=menu_id)
+    truck=Trucks.objects.all()
+    if request.method == 'POST':
+        menu.truck = request.POST.get('truck')
+        menu.item_name = request.POST.get('item_name')
+        menu.price = request.POST.get('price')
+        menu.availability = request.POST.get('availability')
+        menu.save()
+        return redirect('menu')
+    return render(request, 'update_menu.html', {'menu': menu, 'truck': truck})
+def update_truck(request, truck_id):
+    truck = Trucks.objects.get(truck_id=truck_id)
+    if request.method == 'POST':
+        truck.name = request.POST.get('truck_name')
+        truck.current_location = request.POST.get('location')
+        truck.owner = request.POST.get('owner')
+        truck.save()
+        return redirect('trucks')
+    return render(request, 'update_truck.html', {'truck': truck})
