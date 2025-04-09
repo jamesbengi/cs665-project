@@ -19,5 +19,6 @@ urlpatterns = [
     path('update_customer/<int:customer_id>/', views.update_customer, name='update_customer'),
     path('update_menu/<int:menu_id>/', views.update_menu, name='update_menu'),
     path('update_truck/<int:truck_id>/', views.update_truck, name='update_truck'),
+    path('run_raw_sql/', views.run_raw_sql, name='run_raw_sql'),
 
 ]

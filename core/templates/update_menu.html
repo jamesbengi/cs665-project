@@ -38,7 +38,9 @@
         <h2>Update Menu</h2>
         <form action="#" method="POST">
             {% csrf_token %}
+            <label for="truck">Truck ID</label>
             
+            <input type="text" name="truck" id="truck" value="{{menu.truck_id}}" required>
 
             <label for="item_name">Item Name</label>
             <input type="text" name="item_name" id="item_name" value="{{menu.item_name}}" required>
